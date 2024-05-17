@@ -1,0 +1,23 @@
+.is-error{
+    color: red;
+}
+.error{
+    color: red;
+    font-size: 12px;
+    margin: 0%;
+    padding: 0%;
+}
+.btn{
+    width: 400px;
+    background-color: aqua;
+    color: black;
+    border-radius: 5px;
+}
+label,  input {
+    width: 400px;
+}
+button{
+    width: 300px;
+    background-color: aqua;
+    margin: 10px;padding: 10px 2px;
+}
