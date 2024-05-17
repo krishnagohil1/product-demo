@@ -4,9 +4,9 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 import { ENDPOINT } from "../../config"
 import { useDispatch } from "react-redux"
-import { getLogin } from "./productSlice"
+
 function Login(){
-    const dispatch = useDispatch()
+    
     const navigate=useNavigate()
     const formik = useFormik({
         initialValues:{
@@ -24,7 +24,20 @@ function Login(){
             return errors
         },
         onSubmit :async(values)=>{
-            dispatch(getLogin())
+            let response = await axios.post(`${ENDPOINT}/auth/login`,{
+                username : formik.values.username,
+                password : formik.values.password
+            })
+            console.log(response);
+            console.log(response.data);
+            console.log(response.data.token)
+            if(response.data.token){
+                localStorage.setItem("token",response.data.token) 
+                navigate("/product")
+            }
+            else{
+                navigate("/")
+            }
         }
     })
     return(
