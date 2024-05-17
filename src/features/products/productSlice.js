@@ -38,6 +38,11 @@ const productSlice = createSlice({
         }).addCase(getAllProducts.fulfilled,(state , action )=>{
             state.loading = false
             state.data = action.payload     
+        }).addCase(getDetailProduct.pending,(state)=>{
+            state.loading = true
+        }).addCase(getDetailProduct.fulfilled,(state , action)=>{
+            state.loading = false
+            state.productDetails=action.payload
         })
        
     }
